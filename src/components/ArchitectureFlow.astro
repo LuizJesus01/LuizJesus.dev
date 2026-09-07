@@ -1,0 +1,70 @@
+---
+const { items = [] } = Astro.props;
+---
+
+<div class="flow" aria-label="Fluxo de arquitetura">
+  {
+    items.map((item, index) => (
+      <div class="flow-item">
+        <div class="node">{item}</div>
+
+        {
+          index < items.length - 1 && (
+            <div class="arrow" aria-hidden="true">→</div>
+          )
+        }
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .flow-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .node {
+    padding: 11px 13px;
+    border: 1px solid var(--line);
+    background: #0b131a;
+    border-radius: 9px;
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    color: #c8d9e2;
+  }
+
+  .arrow {
+    color: var(--accent);
+    font-family: var(--mono);
+  }
+
+  @media (max-width: 650px) {
+    .flow {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .flow-item {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .arrow {
+      text-align: center;
+      transform: rotate(90deg);
+    }
+
+    .node {
+      text-align: center;
+    }
+  }
+</style>

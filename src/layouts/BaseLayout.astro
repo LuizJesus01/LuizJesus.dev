@@ -1,0 +1,6 @@
+---
+import '../styles/global.css';
+const { title='Luiz Jesus — Engenheiro de Dados Sênior', description='Portfólio de Engenharia de Dados: plataformas modernas, arquitetura, qualidade, governança e decisões de engenharia.', canonicalPath='/' } = Astro.props;
+const canonical = new URL(canonicalPath, Astro.site ?? 'https://luizjesus.dev');
+---
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/><meta name="description" content={description}/><meta name="theme-color" content="#080d12"/><link rel="icon" href="/favicon.svg"/><link rel="canonical" href={canonical}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:url" content={canonical}/><title>{title}</title></head><body><slot/></body></html>
